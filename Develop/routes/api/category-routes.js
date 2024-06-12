@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
     const categories = categoriesData.map((category) => category.get({ plain: true }));
     res.json(categories)
   } catch (err) {
-    res.status(500).json(err);
+    res.status(500).json(err.message);
   }
 });
 
@@ -29,7 +29,7 @@ router.get('/:id',  async (req, res) => {
     const result = categoryData.get({ plain: true });
     res.json(result)
   } catch (err) {
-    res.status(500).json(err);
+    res.status(500).json(err.message);
   }
 });
 
@@ -39,7 +39,7 @@ router.post('/', async (req, res) => {
     const createCategoryData = await Category.create(req.body);
     res.json(createCategoryData);
   } catch (err) {
-    res.status(500).json(err);
+    res.status(500).json(err.message);
   }
 });
 
@@ -53,7 +53,7 @@ router.put('/:id', async (req, res) => {
     )
     res.json(editCategoryData);
     } catch (err) {
-      res.status(500).json(err);
+      res.status(500).json(err.message);
   }
 
 });
@@ -66,7 +66,7 @@ router.delete('/:id', async (req, res) => {
     )
     res.json(deleteCategoryData);
     } catch (err) {
-      res.status(500).json(err);
+      res.status(500).json(err.message);
   }
 });
 
